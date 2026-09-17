@@ -6,7 +6,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config"
 import { connectDB } from "./library/db.js";
-import { job } from "./library/cron.js";
+import job from "./library/cron.js";
 import { clerkMiddleware } from "@clerk/express";
 
 import fs from "fs";
