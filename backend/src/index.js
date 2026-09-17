@@ -9,7 +9,7 @@ import { connectDB } from "./library/db.js";
 import { clerkMiddleware } from "@clerk/express";
 
 import fs from "fs";
-import path from "path;"
+import path from "path";
 
 const app=express();
 const PORT=process.env.PORT;
