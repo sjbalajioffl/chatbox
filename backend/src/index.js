@@ -5,10 +5,12 @@ dns.setServers(["8.8.8.8"]);
 import express from "express";
 import cors from "cors";
 import "dotenv/config"
+import { clerkMiddleware } from "@clerk/express";
+
 import { connectDB } from "./library/db.js";
 import job from "./library/cron.js";
-import { clerkMiddleware } from "@clerk/express";
 import clerkWebhook from "./webhooks/clerkWebhook.js"
+import authRoutes from "./routes/auth.js"
 
 import fs from "fs";
 import path from "path";
@@ -28,6 +30,8 @@ app.use(clerkMiddleware());
 app.get("/health",(req,res)=>{
     res.status(200).json({ok:true});
 });
+
+app.use("/api/auth",authRoutes);
 
 if(fs.existsSync(publicDir)){
     app.use(express.static(publicDir));
