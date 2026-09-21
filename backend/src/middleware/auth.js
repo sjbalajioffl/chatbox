@@ -1,9 +1,10 @@
 import { getAuth } from "@clerk/express";
-import User from "../models/User.js";
+import User from "../models/user.js";
 
 export async function protectRoute(req, res, next) {
     try{
         const { userId } = getAuth(req);
+        // console.log("Clerk userId:", userId);
         if (!userId) {
         res.status(401).json({ message: "Unauthorized" });
         return;
